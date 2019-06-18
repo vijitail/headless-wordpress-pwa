@@ -1,5 +1,4 @@
-export default (props) => {
-    console.log(props);
+export default (props, data) => {
     return(/*html*/`
     <div class="container">
         <div class="row">

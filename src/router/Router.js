@@ -32,13 +32,15 @@ export default class Router {
         return routeMatch;
     }
 
-    navigate(path) {
+    async navigate(path) {
         const route = this.routes.filter(route => this.match(route, path))[0];
         if(!route) this.renderNode.innerHTML = "404! Page not found";
         else {
             console.log(path);
             window.location.href = path.search('/#') === -1 ? '#' + path : path;
-            this.renderNode.innerHTML = route.renderView(); // innerHTML must be avoided
+            this.renderNode.innerHTML = route.renderView({ loading: true }); // innerHTML must be avoided
+            const data = await route.init();
+            this.renderNode.innerHTML = route.renderView(data); // innerHTML must be avoided
         }
     }
 

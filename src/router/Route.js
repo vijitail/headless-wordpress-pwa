@@ -1,22 +1,16 @@
 export default class Route {
-    constructor(name, path, view, beforeRender) {
+    constructor(name, path, view, init) {
         this.name = name;
         this.path = path;
         this.view = view;
-        this.beforeRender = beforeRender;
+        this.init = init;
     }
 
     setProps(newProps) {
         this.props = newProps;
     }
 
-    beforeViewRender() {
-        let data = this.beforeRender();
-        this.setProps(data);
-    }
-
-    renderView() {
-        this.beforeViewRender();
-        return this.view(this.props);
+    renderView(data = {}) {
+        return this.view(this.props, data);
     }
 }
