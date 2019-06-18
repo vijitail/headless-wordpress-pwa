@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0;
+    padding-top: 60px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 10px 30px;
+    color: #000000;
+    font-size: 20px;
+    box-shadow: rgba(152, 157, 168, 0.25) 0px 10px 24px 0px;
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+section#main {
+    background: #fefefe;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.col {
+    flex-basis: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+    .col {
+        flex: 1;
+    }
+}
+
+@media screen and (min-width: 720px) and (max-width: 1023px) {
+    .col {
+        flex-basis: 50%;
+    }
+}
+
+.container {
+    max-width: 1136px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+.card {
+    max-width: 300px;
+    margin: auto;
+    margin-top: 30px;
+    box-shadow: rgba(152, 157, 168, 0.25) 0px 5px 50px 0px;
+}
+
+.card > img.post-thumbnail {
+    width: 100%;
+}
+
+.card > article {
+    padding: 0px 15px 20px;
+}
+
+.card > article > a.btn {
+    background: #eee;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+    color: #333333;
+    font-weight: 600; 
+    text-decoration: none;
+    transition: background .2s, color .3s; 
+}
+
+.card > article > a.btn:hover {
+    background: #000000;
+    color: #fff;
+}
