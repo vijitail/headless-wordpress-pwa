@@ -93,3 +93,57 @@ section#main {
     background: #000000;
     color: #fff;
 }
+
+.card[data-loading="true"] .post-title, .card[data-loading="true"] .post-meta{
+    background: #ccc;
+    height: 16px;
+}
+
+.card[data-loading="true"] .post-meta ~ p {
+    background: #ccc;
+    height: 80px;
+}
+
+.card[data-loading="true"] {
+    overflow: hidden;
+    position: relative;
+}
+
+.card[data-loading="true"]::after {
+    animation: shine .5s ease-in-out  infinite;
+    animation-fill-mode: forwards;  
+    content: "";
+    position: absolute;
+    top: -110%;
+    left: -210%;
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+    transform: rotate(30deg);
+    
+    background: rgba(255, 255, 255, 0.8);
+    background: linear-gradient(
+        to right, 
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.5) 77%,
+        rgba(255, 255, 255) 92%,
+        rgba(255, 255, 255) 100%
+    );
+}
+
+@keyframes shine{
+    10% {
+      opacity: 1;
+      top: -30%;
+      left: -30%;
+      transition-property: left, top, opacity;
+      transition-duration: 0.7s, 0.7s, 0.15s;
+      transition-timing-function: ease;
+    }
+    100% {
+      opacity: 0;
+      top: -30%;
+      left: -30%;
+      transition-property: left, top, opacity;
+    }
+  }
