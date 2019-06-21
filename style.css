@@ -69,12 +69,26 @@ section#main {
     box-shadow: rgba(152, 157, 168, 0.25) 0px 5px 50px 0px;
 }
 
-.card > img.post-thumbnail {
+.card > .thumbnail-container {
+    max-height: 150px;
+    overflow: hidden;
+}
+
+.card img.post-thumbnail {
     width: 100%;
 }
 
 .card > article {
     padding: 0px 15px 20px;
+}
+
+.card > article .post-meta {
+    font-size: 14px;
+}
+
+.card > article p {
+    color: #666;
+    font-weight: 500;
 }
 
 .card > article > a.btn {

@@ -1,7 +1,7 @@
 export default (props, posts) => {
     const renderDate = dateString => {
         const date = new Date(dateString);
-        return date.toLocaleDateString();
+        return date.toDateString();
     }
 
     return(/*html*/`
@@ -21,7 +21,9 @@ export default (props, posts) => {
             `) : posts.map(post =>/*html*/`
             <div class="col">
                 <div class="card">
-                    <img class="post-thumbnail" src=${post.jetpack_featured_media_url} />
+                    <div class="thumbnail-container">
+                        <img class="post-thumbnail" src=${post.jetpack_featured_media_url} />
+                    </div>
                     <article>
                         <h4 class="post-title">${post.title.rendered}</h4>
                         <p class="post-meta">${renderDate(post.date)}</p>
