@@ -24,7 +24,7 @@ export default class Router {
                     if(params === null) params = {};
                     params[paramNames[index]] = value;
                     return params;
-                }, null);
+                }, {});
         }
 
         route.setProps(params);
@@ -36,10 +36,9 @@ export default class Router {
         const route = this.routes.filter(route => this.match(route, path))[0];
         if(!route) this.renderNode.innerHTML = "404! Page not found";
         else {
-            console.log(path);
             window.location.href = path.search('/#') === -1 ? '#' + path : path;
             this.renderNode.innerHTML = route.renderView({ loading: true }); // innerHTML must be avoided
-            const data = await route.init();
+            const data = route.props.hasOwnProperty('id') ? await route.init(route.props.id) : await route.init();
             this.renderNode.innerHTML = route.renderView(data); // innerHTML must be avoided
         }
     }

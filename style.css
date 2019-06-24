@@ -82,13 +82,35 @@ section#main {
     padding: 0px 15px 20px;
 }
 
+.card .post-title {
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+
 .card > article .post-meta {
     font-size: 14px;
+    margin-top: 10px;
 }
 
 .card > article p {
-    color: #666;
+    color: #333;
     font-weight: 500;
+}
+
+.card > article div.author-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card > article div.author-meta img{
+    border-radius: 25px;
+    margin-right: 12px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card > article div.author-meta span{
+    font-size: 14px;
 }
 
 .card > article > a.btn {
@@ -108,22 +130,22 @@ section#main {
     color: #fff;
 }
 
-.card[data-loading="true"] .post-title, .card[data-loading="true"] .post-meta{
+[data-loading="true"] .card .post-title, [data-loading="true"] .card .post-meta{
     background: #ccc;
-    height: 16px;
+    height: 18px;
 }
 
-.card[data-loading="true"] .post-meta ~ p {
+[data-loading="true"] .card .post-meta ~ p {
     background: #ccc;
     height: 80px;
 }
 
-.card[data-loading="true"] {
+[data-loading="true"] .card {
     overflow: hidden;
     position: relative;
 }
 
-.card[data-loading="true"]::after {
+[data-loading="true"] .card::after {
     animation: shine .5s ease-in-out  infinite;
     animation-fill-mode: forwards;  
     content: "";
@@ -147,17 +169,72 @@ section#main {
 
 @keyframes shine{
     10% {
-      opacity: 1;
-      top: -30%;
-      left: -30%;
-      transition-property: left, top, opacity;
-      transition-duration: 0.7s, 0.7s, 0.15s;
-      transition-timing-function: ease;
+        opacity: 1;
+        top: -30%;
+        left: -30%;
+        transition-property: left, top, opacity;
+        transition-duration: 0.7s, 0.7s, 0.15s;
+        transition-timing-function: ease;
     }
     100% {
-      opacity: 0;
-      top: -30%;
-      left: -30%;
-      transition-property: left, top, opacity;
+        opacity: 0;
+        top: -30%;
+        left: -30%;
+        transition-property: left, top, opacity;
     }
-  }
+}
+
+/* POST */
+
+.container.post-container .post-title {
+    font-size: 50px;
+    text-align: center;
+}
+
+.container.post-container figure {
+    margin: 50px 0px;
+    text-align: center;
+}
+
+.container.post-container figure figcaption {
+    margin-top: 10px;
+}
+
+.container.post-container figure.alignwide img {
+    width: 100%;
+    height: auto;
+}
+
+.container.post-container figure.aligncenter img {
+    display: block;
+    margin: auto;
+}
+
+.container.post-container p {
+    font-size: 18px;
+}
+
+.container.post-container blockquote {
+    margin: 30px auto;
+}
+
+.container.post-container blockquote p{
+    color: #999;
+    font-style: italic;
+    font-size: 22px;
+}
+
+.container.post-container[data-loading="true"] .post-title {
+    height: 40px;
+    background: #ccc;
+}
+
+.container.post-container[data-loading="true"] .image-placeholder {
+    height: 300px;
+    background: #ccc;
+}
+
+.container.post-container[data-loading="true"] p {
+    height: 18px;
+    background: #ccc;
+}

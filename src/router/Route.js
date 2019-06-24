@@ -4,6 +4,7 @@ export default class Route {
         this.path = path;
         this.view = view;
         this.init = init;
+        this.props = {};
     }
 
     setProps(newProps) {
