@@ -7,6 +7,7 @@ import postView from './views/post.js';
 const getPosts = async () => {
     const response = await fetch('https://wordpress-pwa-site.000webhostapp.com/wp-json/custom-endpoint/v1/posts');
     const data = await response.json();
+    // const data = {};
     return data;   
 }
 
@@ -22,3 +23,10 @@ const routes = [
 ];
 
 router(routes);
+
+if(navigator.serviceWorker) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker
+            .register('../sw.js')
+    });
+}

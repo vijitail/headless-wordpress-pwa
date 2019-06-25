@@ -1,4 +1,5 @@
 export default (props, posts) => {
+    console.log(posts);
     const renderDate = dateString => {
         const date = new Date(dateString);
         return date.toDateString();
