@@ -1,3 +1,5 @@
+import offlineView from '../views/offline.js';
+
 export default class Router {
     constructor(routes = [], renderNode) {
         this.routes = routes;
@@ -38,7 +40,13 @@ export default class Router {
         else {
             window.location.href = path.search('/#') === -1 ? '#' + path : path;
             this.renderNode.innerHTML = route.renderView({ loading: true }); // innerHTML must be avoided
-            const data = route.props.hasOwnProperty('id') ? await route.init(route.props.id) : await route.init();
+            let data;
+            try {
+                data = route.props.hasOwnProperty('id') ? await route.init(route.props.id) : await route.init();
+            } catch (err) {
+                route.view = offlineView;
+            }
+            console.log('In Router - ', data);
             this.renderNode.innerHTML = route.renderView(data); // innerHTML must be avoided
         }
     }
