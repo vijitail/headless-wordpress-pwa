@@ -9,12 +9,6 @@ self.addEventListener('install', e => {
                 cache.addAll([
                     '/',
                     '/style.css',
-                    // '/sw.js',
-                    // '/src/app.js',
-                    // '/src/router/index.js',
-                    // '/src/router/Route.js',
-                    // '/src/router/Router.js',
-                    // '/src/views/offline.js',
                 ]);
             })  
             .then(() => self.skipWaiting())
@@ -45,12 +39,11 @@ self.addEventListener('fetch', e => {
             .then(cache => cache.match(e.request)
                 .then(res => res || fetch(e.request)
                     .then(res => {
-                        if(res.type === 'basic') {
-                            cache.put(e.request, res.clone());
-                        }
+                        cache.put(e.request, res.clone());
                         return res;
                     }).catch(err => {
                         console.log('Fetch failed; returning offline page instead.');
+                        return { offline: true };
                     })))
     );
 });
